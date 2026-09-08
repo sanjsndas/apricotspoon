@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories · Apricot Spoon Society</title>
+  <!-- Font & premium feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- RESET & BASE (same as homepage) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fbf8f2;
+      color: #2a241e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ----- TYPOGRAPHY ----- */
+    h1, h2, h3, h4, .logo, .nav-label, .article-title, .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: 3.2rem; line-height: 1.1; }
+    h2 { font-size: 2.4rem; line-height: 1.2; }
+    h3 { font-size: 1.8rem; }
+    .body-large { font-size: 1.25rem; font-weight: 300; line-height: 1.7; }
+    .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7f6b5c; }
+
+    /* ----- COLOR ----- */
+    :root {
+      --apricot: #e8b48c;
+      --apricot-light: #f3d9c2;
+      --clay: #b48a71;
+      --cream: #fbf8f2;
+      --dark: #2a241e;
+      --text-muted: #6b5d53;
+      --border: #e4d7cc;
+      --card-bg: #ffffff;
+      --shadow: 0 12px 30px rgba(42, 36, 30, 0.06);
+    }
+
+    /* ----- HEADER (exactly as homepage) ----- */
+    .site-header {
+      padding: 1.8rem 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-icon {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--apricot);
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(10deg);
+      box-shadow: 0 4px 8px rgba(232, 180, 140, 0.3);
+    }
+    .logo {
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+    .logo span { color: var(--clay); }
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 1rem;
+      font-style: italic;
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    .nav-links a:hover { border-bottom-color: var(--apricot); }
+    .nav-links a.active {
+      border-bottom-color: var(--apricot);
+    }
+    .search-toggle {
+      background: var(--apricot-light);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+    .search-toggle span { opacity: 0.6; }
+
+    /* ----- CATEGORIES PAGE SPECIFIC ----- */
+    .categories-hero {
+      margin: 3rem 0 1.5rem;
+    }
+    .categories-hero h1 {
+      margin-bottom: 0.5rem;
+    }
+    .categories-hero .body-large {
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+
+    /* category grid */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 3.5rem;
+    }
+    .category-card {
+      background: var(--card-bg);
+      border-radius: 20px 20px 0 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.8rem 1.8rem 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px rgba(42, 36, 30, 0.08);
+    }
+    .category-card .emoji-big {
+      font-size: 2.8rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .category-card h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+    .category-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .category-card .recipe-count {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--clay);
+      background: var(--apricot-light);
+      display: inline-block;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+    .category-card .explore-link {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-weight: 500;
+      color: var(--clay);
+      border-bottom: 2px solid var(--apricot);
+      padding-bottom: 0.15rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .category-card .explore-link:hover {
+      color: var(--dark);
+    }
+
+    /* featured category highlight */
+    .featured-category {
+      background: var(--apricot-light);
+      border-radius: 24px 24px 0 24px;
+      padding: 2.5rem 3rem;
+      margin: 2rem 0 3rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .featured-category .featured-text {
+      max-width: 600px;
+    }
+    .featured-category .featured-text h2 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+    .featured-category .featured-text p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .featured-category .featured-link {
+      background: var(--dark);
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 1px solid var(--dark);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .featured-category .featured-link:hover {
+      background: transparent;
+      color: var(--dark);
+    }
+
+    /* footer (same) */
+    .site-footer {
+      margin-top: 4rem;
+      border-top: 2px solid var(--border);
+      padding: 3rem 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand .logo { font-size: 1.8rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 280px; }
+    .footer-links h4 { margin-bottom: 0.8rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links a { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .footer-links a:hover { color: var(--dark); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      body { padding: 0 1rem; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+      .featured-category { flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: 1.8rem; }
+      .featured-category .featured-link { white-space: normal; align-self: flex-start; }
+      .site-footer { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .nav-links { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+      .tagline { display: none; }
+      .logo { font-size: 1.6rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.8rem; }
+      .categories-hero h1 { font-size: 2.2rem; }
+      .category-grid { grid-template-columns: 1fr; }
+      .featured-category { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- HEADER (identical, with active state) -->
+  <header class="site-header">
+    <div class="logo-group">
+      <span class="logo-icon"></span>
+      <span class="logo">Apricot <span>Spoon</span></span>
+      <span class="tagline">the baking field guide</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="categories.html" class="active">Categories</a>
+    </nav>
+  </header>
+
+  <!-- CATEGORIES HERO -->
+  <div class="categories-hero">
+    <span class="meta">— browse by category</span>
+    <h1>Find your next <br />baking adventure.</h1>
+    <p class="body-large">From buttery laminated doughs to the gentlest sponges, our categories gather every crumb of wisdom. Start where your curiosity leads.</p>
+  </div>
+
+  <!-- FEATURED CATEGORY (highlight) -->
+  <div class="featured-category">
+    <div class="featured-text">
+      <span class="meta" style="color: var(--clay);">— featured</span>
+      <h2>Sourdough & wild fermentation</h2>
+      <p>Everything you need to know about starters, bulk fermentation, and scoring that perfect ear. A living library of bread wisdom.</p>
+    </div>
+    <a href="#" class="featured-link">Explore sourdough →</a>
+  </div>
+
+  <!-- CATEGORY GRID -->
+  <div class="category-grid">
+    <!-- 1 -->
+    <div class="category-card">
+      <span class="emoji-big">🥐</span>
+      <h3>Viennoiserie</h3>
+      <p>Croissants, pain au chocolat, brioche — laminated layers and enriched doughs that define the art of pastry.</p>
+      <span class="recipe-count">24 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 2 -->
+    <div class="category-card">
+      <span class="emoji-big">🍰</span>
+      <h3>Cakes & sponges</h3>
+      <p>Classic Victoria, chiffon, olive oil, and celebration cakes. Every crumb tells a story of butter and sugar.</p>
+      <span class="recipe-count">31 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 3 -->
+    <div class="category-card">
+      <span class="emoji-big">🥧</span>
+      <h3>Pies & tarts</h3>
+      <p>Flaky, buttery, or nutty crusts with fruit, custard, or savoury fillings. The perfect balance of texture and flavour.</p>
+      <span class="recipe-count">18 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 4 -->
+    <div class="category-card">
+      <span class="emoji-big">🍞</span>
+      <h3>Breads</h3>
+      <p>From crusty country loaves to soft milk buns. All about flours, hydration, and the baker's pulse.</p>
+      <span class="recipe-count">27 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 5 -->
+    <div class="category-card">
+      <span class="emoji-big">🍪</span>
+      <h3>Cookies & biscuits</h3>
+      <p>Chewy, crispy, chunky, or delicate — the science of the perfect cookie, and the joy of a glass of milk.</p>
+      <span class="recipe-count">22 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 6 -->
+    <div class="category-card">
+      <span class="emoji-big">🧁</span>
+      <h3>Patisserie</h3>
+      <p>Éclairs, macarons, and petit fours. Precision and elegance, with a touch of French soul.</p>
+      <span class="recipe-count">15 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 7 -->
+    <div class="category-card">
+      <span class="emoji-big">🍫</span>
+      <h3>Chocolate & confections</h3>
+      <p>Ganaches, truffles, and chocolate tempering. Deep, rich, and utterly irresistible.</p>
+      <span class="recipe-count">14 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+    <!-- 8 -->
+    <div class="category-card">
+      <span class="emoji-big">🥛</span>
+      <h3>Dairy & custards</h3>
+      <p>Crème brûlée, panna cotta, pastry cream, and silky curds. The backbone of so many desserts.</p>
+      <span class="recipe-count">12 recipes</span>
+      <a href="#" class="explore-link">Explore →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER (same) -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <div class="logo">Apricot <span>Spoon</span></div>
+      <p style="margin-top: 0.5rem;">A field guide for bakers who chase the perfect crumb. Since 2024.</p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">📍 London · Berlin · Melbourne</p>
+    </div>
+    <div class="footer-links">
+      <h4>Journal</h4>
+      <a href="#">Latest</a>
+      <a href="#">Guides</a>
+      <a href="#">Recipes</a>
+      <a href="#">Techniques</a>
+    </div>
+    <div class="footer-links">
+      <h4>Community</h4>
+      <a href="about.html">About</a>
+      <a href="#">Authors</a>
+      <a href="#">Resources</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="#">Editorial policy</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Apricot Spoon Society. All rights reserved.</span>
+      <span>handcrafted with butter &amp; patience</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

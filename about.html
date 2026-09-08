@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Apricot Spoon Society</title>
+  <!-- Font & premium feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- RESET & BASE (same as homepage) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fbf8f2;
+      color: #2a241e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ----- TYPOGRAPHY ----- */
+    h1, h2, h3, h4, .logo, .nav-label, .article-title, .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: 3.2rem; line-height: 1.1; }
+    h2 { font-size: 2.4rem; line-height: 1.2; }
+    h3 { font-size: 1.8rem; }
+    .body-large { font-size: 1.25rem; font-weight: 300; line-height: 1.7; }
+    .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7f6b5c; }
+
+    /* ----- COLOR ----- */
+    :root {
+      --apricot: #e8b48c;
+      --apricot-light: #f3d9c2;
+      --clay: #b48a71;
+      --cream: #fbf8f2;
+      --dark: #2a241e;
+      --text-muted: #6b5d53;
+      --border: #e4d7cc;
+      --card-bg: #ffffff;
+      --shadow: 0 12px 30px rgba(42, 36, 30, 0.06);
+    }
+
+    /* ----- HEADER (exactly as homepage) ----- */
+    .site-header {
+      padding: 1.8rem 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-icon {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--apricot);
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(10deg);
+      box-shadow: 0 4px 8px rgba(232, 180, 140, 0.3);
+    }
+    .logo {
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+    .logo span { color: var(--clay); }
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 1rem;
+      font-style: italic;
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    .nav-links a:hover { border-bottom-color: var(--apricot); }
+    .search-toggle {
+      background: var(--apricot-light);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+    .search-toggle span { opacity: 0.6; }
+
+    /* ----- ABOUT PAGE SPECIFIC ----- */
+    .about-hero {
+      margin: 3rem 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-hero h1 {
+      margin-bottom: 1rem;
+    }
+    .about-hero .body-large {
+      color: var(--text-muted);
+    }
+    .about-image {
+      background: var(--apricot-light);
+      border-radius: 20px 20px 20px 0;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f3d9c2"/><circle cx="150" cy="110" r="70" fill="%23e8b48c" opacity="0.6"/><circle cx="280" cy="170" r="50" fill="%23b48a71" opacity="0.4"/><circle cx="90" cy="200" r="40" fill="%23e8b48c" opacity="0.3"/><rect x="120" y="230" width="160" height="12" fill="%23b48a71" opacity="0.3"/><rect x="160" y="250" width="80" height="12" fill="%23b48a71" opacity="0.2"/></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* mission statement */
+    .mission-block {
+      background: var(--card-bg);
+      padding: 2.8rem 3rem;
+      border-radius: 24px 24px 24px 0;
+      border-left: 6px solid var(--apricot);
+      box-shadow: var(--shadow);
+      margin: 2rem 0 3rem;
+    }
+    .mission-block h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .mission-block p {
+      color: var(--text-muted);
+      max-width: 800px;
+      font-size: 1.1rem;
+    }
+
+    /* team grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2.5rem 0 3rem;
+    }
+    .team-card {
+      background: var(--card-bg);
+      padding: 1.8rem 1.8rem 2rem;
+      border-radius: 16px 16px 0 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s;
+    }
+    .team-card:hover { transform: translateY(-5px); }
+    .team-card .avatar {
+      width: 70px;
+      height: 70px;
+      background: var(--apricot-light);
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="40" r="24" fill="%23e8b48c" opacity="0.7"/><circle cx="50" cy="80" r="30" fill="%23b48a71" opacity="0.4"/></svg>');
+      background-size: cover;
+      background-position: center;
+      border: 2px solid var(--apricot);
+    }
+    .team-card h3 { font-size: 1.4rem; margin-bottom: 0.2rem; }
+    .team-card .role { font-size: 0.85rem; color: var(--clay); font-weight: 500; letter-spacing: 0.02em; }
+    .team-card p { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.6rem; }
+
+    /* timeline / story */
+    .story-section {
+      margin: 3rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .story-section h2 { margin-bottom: 1.5rem; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .story-item {
+      border-left: 3px solid var(--apricot);
+      padding-left: 1.2rem;
+    }
+    .story-item .year {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+      color: var(--apricot);
+      line-height: 1;
+    }
+    .story-item p { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.3rem; }
+
+    /* footer (same) */
+    .site-footer {
+      margin-top: 4rem;
+      border-top: 2px solid var(--border);
+      padding: 3rem 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand .logo { font-size: 1.8rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 280px; }
+    .footer-links h4 { margin-bottom: 0.8rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links a { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .footer-links a:hover { color: var(--dark); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      body { padding: 0 1rem; }
+      .about-hero { grid-template-columns: 1fr; gap: 1.5rem; }
+      .team-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .site-footer { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .nav-links { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+      .tagline { display: none; }
+      .logo { font-size: 1.6rem; }
+      .mission-block { padding: 1.8rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.8rem; }
+      .about-hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- HEADER (identical to homepage) -->
+  <header class="site-header">
+    <div class="logo-group">
+      <span class="logo-icon"></span>
+      <span class="logo">Apricot <span>Spoon</span></span>
+      <span class="tagline">the baking field guide</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" style="border-bottom-color: var(--apricot);">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="categories.html">Categories</a>
+    </nav>
+  </header>
+
+  <!-- ABOUT HERO -->
+  <div class="about-hero">
+    <div>
+      <span class="meta">— about the society</span>
+      <h1>Baking as a <br />way of knowing.</h1>
+      <p class="body-large">We are a collective of bakers, writers, and flour-obsessed storytellers. Our mission is to document the craft—from the science of fermentation to the poetry of a perfect crust.</p>
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#mission" class="btn" style="background: var(--dark); color: #fff; padding: 0.7rem 2rem; border-radius: 40px; font-weight: 500; display: inline-block;">Our mission</a>
+        <a href="#team" style="color: var(--clay); font-weight: 500; align-self: center;">Meet the team →</a>
+      </div>
+    </div>
+    <div class="about-image"></div>
+  </div>
+
+  <!-- MISSION BLOCK -->
+  <div id="mission" class="mission-block">
+    <h2>Flour, water, salt, time — and something more.</h2>
+    <p>At Apricot Spoon, we believe that baking is a form of slow knowledge. It connects us to tradition, to the seasons, and to each other. We publish guides, essays, and recipes that treat baking as both a science and an art. No shortcuts, no hype — just the honest craft of turning simple ingredients into something extraordinary.</p>
+  </div>
+
+  <!-- TEAM -->
+  <h2 style="margin-top: 2rem;">The bakers behind the journal</h2>
+  <div id="team" class="team-grid">
+    <div class="team-card">
+      <div class="avatar" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2240%22 r=%2224%22 fill=%22%23e8b48c%22 opacity=%220.7%22/><circle cx=%2250%22 cy=%2280%22 r=%2230%22 fill=%22%23b48a71%22 opacity=%220.4%22/></svg>');"></div>
+      <h3>Margot L.</h3>
+      <div class="role">Editor &amp; baker</div>
+      <p>Margot spent a decade in pastry kitchens before turning to writing. She believes in the spiritual power of a well-fermented dough.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2235%22 r=%2226%22 fill=%22%23b48a71%22 opacity=%220.6%22/><circle cx=%2250%22 cy=%2280%22 r=%2232%22 fill=%22%23e8b48c%22 opacity=%220.3%22/></svg>');"></div>
+      <h3>Leo B.</h3>
+      <div class="role">Sourdough specialist</div>
+      <p>Leo runs a micro-bakery in Berlin and has been maintaining the same starter since 2016. He's our go-to for fermentation questions.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2238%22 r=%2222%22 fill=%22%23e8b48c%22 opacity=%220.8%22/><circle cx=%2250%22 cy=%2280%22 r=%2230%22 fill=%22%23b48a71%22 opacity=%220.5%22/></svg>');"></div>
+      <h3>Clara D.</h3>
+      <div class="role">Pastry &amp; lamination</div>
+      <p>Clara trained in France and has a passion for viennoiserie. She teaches our most popular workshops on croissant-making.</p>
+    </div>
+  </div>
+
+  <!-- STORY / TIMELINE -->
+  <div class="story-section">
+    <h2>Our story</h2>
+    <div class="story-grid">
+      <div class="story-item">
+        <div class="year">2024</div>
+        <p>Apricot Spoon was founded in a small kitchen in London, with a single sourdough starter and a vision to create a new kind of baking publication.</p>
+      </div>
+      <div class="story-item">
+        <div class="year">2025</div>
+        <p>We published our first field guide, “The Baker’s Ratio,” and grew into a global community of home bakers, professionals, and flour enthusiasts.</p>
+      </div>
+      <div class="story-item">
+        <div class="year">2026</div>
+        <p>Today, we continue to explore the craft—from ancient grains to modern techniques—always with a spoonful of curiosity and a pinch of wonder.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER (same as homepage) -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <div class="logo">Apricot <span>Spoon</span></div>
+      <p style="margin-top: 0.5rem;">A field guide for bakers who chase the perfect crumb. Since 2024.</p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">📍 London · Berlin · Melbourne</p>
+    </div>
+    <div class="footer-links">
+      <h4>Journal</h4>
+      <a href="#">Latest</a>
+      <a href="#">Guides</a>
+      <a href="#">Recipes</a>
+      <a href="#">Techniques</a>
+    </div>
+    <div class="footer-links">
+      <h4>Community</h4>
+      <a href="about.html">About</a>
+      <a href="#">Authors</a>
+      <a href="#">Resources</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="#">Editorial policy</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Apricot Spoon Society. All rights reserved.</span>
+      <span>handcrafted with butter &amp; patience</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

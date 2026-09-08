@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apricot Spoon Society — The Art of Home Baking</title>
+  <!-- Font & premium feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ----- RESET & BASE ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fbf8f2;
+      color: #2a241e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ----- TYPOGRAPHY (premium, niche: baking/artisanal) ----- */
+    h1, h2, h3, h4, .logo, .nav-label, .article-title, .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: 3.2rem; line-height: 1.1; }
+    h2 { font-size: 2.4rem; line-height: 1.2; }
+    h3 { font-size: 1.8rem; }
+    .body-large { font-size: 1.25rem; font-weight: 300; line-height: 1.7; }
+    .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7f6b5c; }
+
+    /* ----- COLOR (apricot, cream, warm clay) ----- */
+    :root {
+      --apricot: #e8b48c;
+      --apricot-light: #f3d9c2;
+      --clay: #b48a71;
+      --cream: #fbf8f2;
+      --dark: #2a241e;
+      --text-muted: #6b5d53;
+      --border: #e4d7cc;
+      --card-bg: #ffffff;
+      --shadow: 0 12px 30px rgba(42, 36, 30, 0.06);
+    }
+
+    /* ----- UNIQUE NAVIGATION: "field guide" style, horizontal + search ----- */
+    .site-header {
+      padding: 1.8rem 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-icon {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--apricot);
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(10deg);
+      box-shadow: 0 4px 8px rgba(232, 180, 140, 0.3);
+    }
+    .logo {
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+    .logo span { color: var(--clay); }
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 1rem;
+      font-style: italic;
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    .nav-links a:hover { border-bottom-color: var(--apricot); }
+    .search-toggle {
+      background: var(--apricot-light);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+    .search-toggle span { opacity: 0.6; }
+
+    /* ----- HOMEPAGE ARCHITECTURE: "notebook + library" hybrid ----- */
+    /* HERO: editorial, not giant empty */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 3rem 0 4rem;
+      align-items: center;
+    }
+    .hero-text h1 { margin-bottom: 1rem; }
+    .hero-text .body-large { color: var(--text-muted); }
+    .hero-image {
+      background: var(--apricot-light);
+      border-radius: 20px 20px 20px 0;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f3d9c2"/><circle cx="180" cy="120" r="70" fill="%23e8b48c" opacity="0.7"/><circle cx="260" cy="180" r="40" fill="%23b48a71" opacity="0.5"/><circle cx="120" cy="200" r="50" fill="%23e8b48c" opacity="0.4"/><rect x="140" y="220" width="120" height="12" fill="%23b48a71" opacity="0.4"/><rect x="180" y="240" width="60" height="12" fill="%23b48a71" opacity="0.3"/></svg>');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--border);
+    }
+
+    /* "knowledge index" — section with numbered cards */
+    .index-section {
+      margin: 4rem 0;
+    }
+    .index-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .index-header h2 { font-size: 2rem; }
+    .index-header a { color: var(--clay); font-weight: 500; }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .index-card {
+      background: var(--card-bg);
+      padding: 1.8rem 1.8rem 2.2rem;
+      border-radius: 12px 12px 0 12px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--apricot);
+      transition: transform 0.2s;
+    }
+    .index-card:hover { transform: translateY(-4px); }
+    .index-card .number {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.8rem;
+      color: var(--apricot);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .index-card h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .index-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* FEATURED ARTICLE: infographic + longform teaser */
+    .featured-block {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 24px 24px 24px 0;
+      box-shadow: var(--shadow);
+      margin: 4rem 0;
+      border: 1px solid var(--border);
+    }
+    .featured-content .meta { margin-bottom: 0.5rem; }
+    .featured-content h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+    .featured-content p { color: var(--text-muted); margin-bottom: 1.5rem; }
+    .btn {
+      display: inline-block;
+      background: var(--dark);
+      color: #fff;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--clay); }
+
+    .infographic {
+      background: var(--apricot-light);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240"><rect width="300" height="240" fill="%23f3d9c2"/><circle cx="80" cy="80" r="40" fill="%23e8b48c" opacity="0.5"/><rect x="60" y="140" width="160" height="12" fill="%23b48a71" opacity="0.3"/><rect x="100" y="170" width="100" height="12" fill="%23b48a71" opacity="0.2"/><circle cx="220" cy="70" r="30" fill="%23e8b48c" opacity="0.4"/><circle cx="40" cy="200" r="20" fill="%23b48a71" opacity="0.2"/></svg>');
+      background-size: cover;
+      min-height: 200px;
+      color: var(--dark);
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .infographic small { font-family: 'Inter', sans-serif; font-size: 0.9rem; display: block; opacity: 0.7; }
+
+    /* ARTICLE GRID: "library" style with varied cards */
+    .library-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 3rem 0;
+    }
+    .library-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      border-radius: 16px 16px 0 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .library-card:hover { box-shadow: 0 16px 40px rgba(42, 36, 30, 0.08); }
+    .library-card .card-img {
+      height: 180px;
+      background: var(--apricot-light);
+      background-size: cover;
+      background-position: center;
+      border-bottom: 2px solid var(--apricot);
+    }
+    .library-card .card-body {
+      padding: 1.8rem;
+      flex: 1;
+    }
+    .library-card .card-body .meta { margin-bottom: 0.4rem; }
+    .library-card .card-body h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .library-card .card-body p { color: var(--text-muted); font-size: 0.95rem; }
+    .library-card .card-footer {
+      padding: 0.8rem 1.8rem 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* SIDEBAR (category explorer) */
+    .category-explorer {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px 20px 0 20px;
+      border: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .category-explorer h3 { margin-bottom: 1.2rem; }
+    .category-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .category-tags a {
+      background: var(--apricot-light);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .category-tags a:hover { background: var(--apricot); color: white; }
+
+    /* FOOTER (premium, handcrafted) */
+    .site-footer {
+      margin-top: 5rem;
+      border-top: 2px solid var(--border);
+      padding: 3rem 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand .logo { font-size: 1.8rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 280px; }
+    .footer-links h4 { margin-bottom: 0.8rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links a { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .footer-links a:hover { color: var(--dark); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ----- RESPONSIVE (mobile-first) ----- */
+    @media (max-width: 768px) {
+      body { padding: 0 1rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .index-grid { grid-template-columns: 1fr; }
+      .featured-block { grid-template-columns: 1fr; padding: 1.5rem; }
+      .library-grid { grid-template-columns: 1fr; }
+      .site-footer { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .nav-links { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+      .tagline { display: none; }
+      .logo { font-size: 1.6rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.8rem; }
+      .featured-content h2 { font-size: 1.6rem; }
+      .index-card .number { font-size: 2rem; }
+      .nav-links a { font-size: 0.8rem; }
+    }
+
+    /* ----- UTILITY: unique breadcrumb, etc ----- */
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin: 1rem 0 0; }
+    .breadcrumb a { color: var(--clay); }
+
+    /* ----- PAGE SECTIONS (hidden pages but referenced) ----- */
+    .page-section { display: none; } /* just for completeness, we use same styling */
+    /* all required pages are represented via navigation links to # */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo-group">
+        <span class="logo-icon"></span>
+        <span class="logo">Apricot <span>Spoon</span></span>
+        <span class="tagline">the baking field guide</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms Of Privacy</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookies Policy</a> 
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="categories.html">Categories</a>
+      </nav>
+    </header>
+
+    <!-- HERO (unique: editorial + image) -->
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="meta">— The art of home baking</span>
+        <h1>Recipes that remember<br>the first bite.</h1>
+        <p class="body-large">From rustic sourdough to buttery brioche — we document the craft, science, and soul of baking. No shortcuts, just flour and fire.</p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#" class="btn">Explore the journal</a>
+          <a href="#" style="color: var(--clay); font-weight: 500; align-self: center;">Start with sourdough →</a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+    </div>
+
+    <!-- KNOWLEDGE INDEX (unique: numbered cards) -->
+    <section class="index-section">
+      <div class="index-header">
+        <h2>Baking fundamentals</h2>
+        <a href="#">view all →</a>
+      </div>
+      <div class="index-grid">
+        <div class="index-card">
+          <div class="number">01</div>
+          <h3>Hydration &amp; time</h3>
+          <p>Understanding dough hydration, autolyse, and bulk fermentation. The foundation of great bread.</p>
+        </div>
+        <div class="index-card">
+          <div class="number">02</div>
+          <h3>Butter &amp; lamination</h3>
+          <p>Croissants, puff pastry, and the art of folding cold butter into dough. Temperature is everything.</p>
+        </div>
+        <div class="index-card">
+          <div class="number">03</div>
+          <h3>Sourdough ecology</h3>
+          <p>Your starter is a living thing. Learn to feed, maintain, and bake with wild yeast.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED ARTICLE + INFOGRAPHIC (long-form teaser) -->
+    <div class="featured-block">
+      <div class="featured-content">
+        <div class="meta">📖 featured guide</div>
+        <h2>The Baker’s Ratio: Flour, Water, Salt, Time</h2>
+        <p>Master the four pillars of bread making. A deep dive into baker’s percentages, fermentation schedules, and how to read your dough.</p>
+        <a href="#" class="btn">Read the full guide</a>
+        <div style="margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-muted);">By Margot L. · 12 min read · updated 2 days ago</div>
+      </div>
+      <div class="infographic">
+        <span>📊</span> Baking ratio cheat sheet <small>— hydration, salt, yeast</small>
+      </div>
+    </div>
+
+    <!-- LIBRARY GRID (articles with varied card styles) -->
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 2rem;">
+      <h2 style="font-size: 2rem;">From the journal</h2>
+      <a href="#" style="color: var(--clay); font-weight: 500;">see all →</a>
+    </div>
+    <div class="library-grid">
+      <article class="library-card">
+        <div class="card-img" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23f3d9c2%22/><circle cx=%22120%22 cy=%2280%22 r=%2250%22 fill=%22%23e8b48c%22 opacity=%220.5%22/><circle cx=%22300%22 cy=%22120%22 r=%2260%22 fill=%22%23b48a71%22 opacity=%220.3%22/></svg>');"></div>
+        <div class="card-body">
+          <div class="meta">sourdough · beginner</div>
+          <h3>Your first sourdough loaf</h3>
+          <p>A step-by-step guide with timelapse photos. No fancy equipment needed.</p>
+        </div>
+        <div class="card-footer"><span>By Leo B.</span><span>8 min read</span></div>
+      </article>
+      <article class="library-card">
+        <div class="card-img" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23f3d9c2%22/><rect x=%2280%22 y=%2260%22 width=%22240%22 height=%2290%22 fill=%22%23e8b48c%22 opacity=%220.6%22/><circle cx=%22300%22 cy=%22100%22 r=%2240%22 fill=%22%23b48a71%22 opacity=%220.4%22/></svg>');"></div>
+        <div class="card-body">
+          <div class="meta">pastry · advanced</div>
+          <h3>Laminating without fear</h3>
+          <p>How to achieve 27 perfect layers. Troubleshooting butter breakage and temperature control.</p>
+        </div>
+        <div class="card-footer"><span>By Clara D.</span><span>14 min read</span></div>
+      </article>
+      <article class="library-card">
+        <div class="card-img" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23f3d9c2%22/><circle cx=%22200%22 cy=%2290%22 r=%2260%22 fill=%22%23e8b48c%22 opacity=%220.5%22/><circle cx=%22100%22 cy=%22150%22 r=%2230%22 fill=%22%23b48a71%22 opacity=%220.4%22/></svg>');"></div>
+        <div class="card-body">
+          <div class="meta">ingredients · science</div>
+          <h3>Flour power: protein &amp; ash</h3>
+          <p>Why bread flour, all-purpose, and whole wheat behave differently. A baker’s guide to choosing flour.</p>
+        </div>
+        <div class="card-footer"><span>By Margot L.</span><span>10 min read</span></div>
+      </article>
+      <article class="library-card">
+        <div class="card-img" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%23f3d9c2%22/><rect x=%2250%22 y=%2250%22 width=%22300%22 height=%22100%22 fill=%22%23e8b48c%22 opacity=%220.4%22/><circle cx=%22320%22 cy=%2290%22 r=%2240%22 fill=%22%23b48a71%22 opacity=%220.5%22/></svg>');"></div>
+        <div class="card-body">
+          <div class="meta">equipment · troubleshooting</div>
+          <h3>Oven spring &amp; steam</h3>
+          <p>Creating the perfect crust. Dutch ovens, steam trays, and scoring techniques.</p>
+        </div>
+        <div class="card-footer"><span>By Leo B.</span><span>9 min read</span></div>
+      </article>
+    </div>
+
+    <!-- CATEGORY EXPLORER (unique component) -->
+    <div class="category-explorer">
+      <h3>Explore by topic</h3>
+      <div class="category-tags">
+        <a href="#">Sourdough</a>
+        <a href="#">Pastry</a>
+        <a href="#">Brioche</a>
+        <a href="#">Whole grain</a>
+        <a href="#">Gluten-free</a>
+        <a href="#">Tools</a>
+        <a href="#">Science</a>
+        <a href="#">Seasonal</a>
+      </div>
+    </div>
+
+    <!-- FOOTER (handcrafted, premium) -->
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <div class="logo">Apricot <span>Spoon</span></div>
+        <p style="margin-top: 0.5rem;">A field guide for bakers who chase the perfect crumb. Since 2024.</p>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">📍 London · Berlin · Melbourne</p>
+      </div>
+      <div class="footer-links">
+        <h4>Journal</h4>
+        <a href="#">Latest</a>
+        <a href="#">Guides</a>
+        <a href="#">Recipes</a>
+        <a href="#">Techniques</a>
+      </div>
+      <div class="footer-links">
+        <h4>Community</h4>
+        <a href="#">About</a>
+        <a href="#">Authors</a>
+        <a href="#">Resources</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Editorial policy</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Apricot Spoon Society. All rights reserved.</span>
+        <span>handcrafted with butter &amp; patience</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

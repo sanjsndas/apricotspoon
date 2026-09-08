@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms · Apricot Spoon Society</title>
+  <!-- Font & premium feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- RESET & BASE (same as homepage) ----- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fbf8f2;
+      color: #2a241e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ----- TYPOGRAPHY ----- */
+    h1, h2, h3, h4, .logo, .nav-label, .article-title, .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: 3.2rem; line-height: 1.1; }
+    h2 { font-size: 2.4rem; line-height: 1.2; }
+    h3 { font-size: 1.8rem; }
+    .body-large { font-size: 1.25rem; font-weight: 300; line-height: 1.7; }
+    .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7f6b5c; }
+
+    /* ----- COLOR ----- */
+    :root {
+      --apricot: #e8b48c;
+      --apricot-light: #f3d9c2;
+      --clay: #b48a71;
+      --cream: #fbf8f2;
+      --dark: #2a241e;
+      --text-muted: #6b5d53;
+      --border: #e4d7cc;
+      --card-bg: #ffffff;
+      --shadow: 0 12px 30px rgba(42, 36, 30, 0.06);
+    }
+
+    /* ----- HEADER (exactly as homepage) ----- */
+    .site-header {
+      padding: 1.8rem 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-icon {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--apricot);
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(10deg);
+      box-shadow: 0 4px 8px rgba(232, 180, 140, 0.3);
+    }
+    .logo {
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+    .logo span { color: var(--clay); }
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 1rem;
+      font-style: italic;
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    .nav-links a:hover { border-bottom-color: var(--apricot); }
+    .search-toggle {
+      background: var(--apricot-light);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+    .search-toggle span { opacity: 0.6; }
+
+    /* ----- TERMS PAGE SPECIFIC ----- */
+    .terms-hero {
+      margin: 3rem 0 1.5rem;
+    }
+    .terms-hero h1 {
+      margin-bottom: 0.5rem;
+    }
+    .terms-hero .body-large {
+      color: var(--text-muted);
+      max-width: 720px;
+    }
+
+    .terms-card {
+      background: var(--card-bg);
+      border-radius: 20px 20px 0 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      margin: 2rem 0 3.5rem;
+    }
+    .terms-card h2 {
+      font-size: 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+    }
+    .terms-card h2:first-of-type {
+      margin-top: 0;
+    }
+    .terms-card p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .terms-card ul, .terms-card ol {
+      margin: 0.5rem 0 1.2rem 1.8rem;
+      color: var(--text-muted);
+    }
+    .terms-card li {
+      margin-bottom: 0.4rem;
+    }
+    .terms-card strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .terms-card .highlight-box {
+      background: var(--apricot-light);
+      padding: 1.2rem 1.8rem;
+      border-radius: 12px 12px 0 12px;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--apricot);
+    }
+    .terms-card .highlight-box p {
+      margin-bottom: 0;
+      color: var(--dark);
+    }
+
+    /* footer (same) */
+    .site-footer {
+      margin-top: 4rem;
+      border-top: 2px solid var(--border);
+      padding: 3rem 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand .logo { font-size: 1.8rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.95rem; max-width: 280px; }
+    .footer-links h4 { margin-bottom: 0.8rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links a { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .footer-links a:hover { color: var(--dark); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      body { padding: 0 1rem; }
+      .terms-card { padding: 1.8rem; }
+      .site-footer { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .nav-links { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+      .tagline { display: none; }
+      .logo { font-size: 1.6rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.8rem; }
+      .terms-hero h1 { font-size: 2.2rem; }
+      .terms-card { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- HEADER (identical) -->
+  <header class="site-header">
+    <div class="logo-group">
+      <span class="logo-icon"></span>
+      <span class="logo">Apricot <span>Spoon</span></span>
+      <span class="tagline">the baking field guide</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html" style="border-bottom-color: var(--apricot);">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="categories.html">Categories</a>
+    </nav>
+  </header>
+
+  <!-- TERMS HERO -->
+  <div class="terms-hero">
+    <span class="meta">— terms of use</span>
+    <h1>Our terms, your <br />spoonful of clarity.</h1>
+    <p class="body-large">By using the Apricot Spoon Society website, you agree to these terms. We keep them simple, fair, and baked with transparency.</p>
+  </div>
+
+  <!-- TERMS CONTENT -->
+  <div class="terms-card">
+    <h2>1. Acceptance of terms</h2>
+    <p>By accessing or using the Apricot Spoon Society website (“the Site”), you agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree with any part of these terms, you must not use the Site.</p>
+
+    <h2>2. Intellectual property</h2>
+    <p>All content on this Site — including text, recipes, photographs, illustrations, logos, and design — is the property of Apricot Spoon Society or its content creators and is protected by copyright and trademark laws. You may not reproduce, distribute, or create derivative works without explicit written permission, except for personal, non-commercial use.</p>
+    <ul>
+      <li><strong>Personal use:</strong> You may print recipes for your own kitchen.</li>
+      <li><strong>Sharing:</strong> You may share links to our content with proper attribution.</li>
+      <li><strong>Commercial use:</strong> Any commercial use requires prior written consent.</li>
+    </ul>
+
+    <h2>3. User contributions</h2>
+    <p>We welcome comments, feedback, and recipe reviews. By submitting content to the Site, you grant Apricot Spoon Society a worldwide, royalty-free, perpetual license to use, modify, and display that content in connection with the Site. You retain ownership of your contributions, but you agree not to submit anything that is unlawful, offensive, or infringes on others' rights.</p>
+    <div class="highlight-box">
+      <p><strong>🧑‍🍳 Our promise:</strong> We will never sell your personal data or use your contributions in ways you wouldn't expect. Respect is the main ingredient.</p>
+    </div>
+
+    <h2>4. Disclaimer of warranties</h2>
+    <p>The Site and all content are provided “as is” without any warranties, express or implied. We do our best to ensure accuracy, but we cannot guarantee that recipes, techniques, or advice will always be perfect or suitable for your specific situation. Baking is a craft — results may vary.</p>
+
+    <h2>5. Limitation of liability</h2>
+    <p>To the fullest extent permitted by law, Apricot Spoon Society shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Site, including but not limited to recipe failures, kitchen mishaps, or any reliance on published content.</p>
+
+    <h2>6. External links</h2>
+    <p>Our Site may contain links to third-party websites. These links are provided for your convenience, and we do not endorse or assume responsibility for the content or practices of any third-party site.</p>
+
+    <h2>7. Changes to terms</h2>
+    <p>We reserve the right to update these Terms of Use at any time. The “last updated” date at the bottom of this page indicates when changes were made. Continued use of the Site after changes constitutes acceptance of the new terms.</p>
+
+    <h2>8. Governing law</h2>
+    <p>These terms shall be governed by and construed in accordance with the laws of the United Kingdom, without regard to its conflict of law provisions.</p>
+
+    <h2>9. Contact</h2>
+    <p>If you have any questions about these terms, please reach out to us at <a href="#" style="color: var(--clay); font-weight: 500; border-bottom: 1px dotted var(--clay);">hello@apricotspoon.com</a> or through our <a href="contact.html" style="color: var(--clay); font-weight: 500; border-bottom: 1px dotted var(--clay);">contact page</a>.</p>
+
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1.5rem;"><strong>Last updated:</strong> 25 August 2026</p>
+  </div>
+
+  <!-- FOOTER (same) -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <div class="logo">Apricot <span>Spoon</span></div>
+      <p style="margin-top: 0.5rem;">A field guide for bakers who chase the perfect crumb. Since 2024.</p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">📍 London · Berlin · Melbourne</p>
+    </div>
+    <div class="footer-links">
+      <h4>Journal</h4>
+      <a href="#">Latest</a>
+      <a href="#">Guides</a>
+      <a href="#">Recipes</a>
+      <a href="#">Techniques</a>
+    </div>
+    <div class="footer-links">
+      <h4>Community</h4>
+      <a href="about.html">About</a>
+      <a href="#">Authors</a>
+      <a href="#">Resources</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="#">Editorial policy</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Apricot Spoon Society. All rights reserved.</span>
+      <span>handcrafted with butter &amp; patience</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
